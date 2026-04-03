@@ -16,5 +16,5 @@ services:
       # DISABLE_IPV6: 'true'        # 如果你的主机不支持 IPv6，取消注释这行
 
     volumes:
-      - ./data:/data                  # 持久化数据库、配置等
-      - ./letsencrypt:/etc/letsencrypt  # 持久化 Let's Encrypt 证书
+      - ~/.nginx-proxy-manager/ata:/data                  # 持久化数据库、配置等
+      - ~/.nginx-proxy-manager/letsencrypt:/etc/letsencrypt  # 持久化 Let's Encrypt 证书
