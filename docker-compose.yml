@@ -1,0 +1,20 @@
+# version: '3.8'
+
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'   # 推荐使用 latest，稳定可靠
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+
+    ports:
+      - '80:80'     # 公网 HTTP 端口（必须）
+      - '443:443'   # 公网 HTTPS 端口（必须）
+      - '81:81'     # Web 管理界面端口（建议保留）
+
+    environment:
+      TZ: 'Asia/Singapore'          # 改成你的时区（新加坡用这个）
+      # DISABLE_IPV6: 'true'        # 如果你的主机不支持 IPv6，取消注释这行
+
+    volumes:
+      - ./data:/data                  # 持久化数据库、配置等
+      - ./letsencrypt:/etc/letsencrypt  # 持久化 Let's Encrypt 证书
